@@ -1,0 +1,86 @@
+# version: "3"
+# services:
+#   postgresdb:
+#     image: postgres
+#     restart: always
+#     environment:
+#       - PGUSER=postgres
+#       - PGHOST=postgres
+#       - PGDATABASE=postgres
+#       - PGPASSWORD=postgres_password
+#       - PGPORT=5432
+#       - POSTGRES_HOST_AUTH_METHOD=trust
+#     ports:
+#       - "5432:5432"
+
+#   app:
+#     build:
+#       dockerfile: Dockerfile
+#       context: .
+#     depends_on:
+#       - postgresdb
+#     restart: unless-stopped
+#     ports:
+#       - 4800:4800
+#     environment:
+#       - PGUSER=postgres
+#       - PGHOST=postgres
+#       - PGDATABASE=postgres
+#       - PGPASSWORD=postgres_password
+#       - PGPORT=5432
+#       - POSTGRES_HOST_AUTH_METHOD=trust
+
+# volumes:
+#   db:
+
+# version: "3"
+# services:
+#   db:
+#     image: postgres
+#     environment:
+#       POSTGRES_PASSWORD: 020300
+#       POSTGRES_USER: postgres
+#       POSTGRES_DB: ai
+#     ports:
+#       - "5432:5432"
+#   app:
+#     image: my-node-app
+#     ports:
+#       - "4800:4800"
+#     build:
+#       dockerfile: Dockerfile
+#       context: .
+#     depends_on:
+#       - db
+
+version: "3.9"
+
+services:
+  node_app:
+    container_name: node_app
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - "4800:4800"
+    environment:
+      - PG_DB=ai
+      - PG_USER=postgres
+      - PG_PASSWORD=020300
+      - PG_HOST=node_db
+    restart: always
+    depends_on:
+      - node_db
+
+  node_db:
+    container_name: node_db
+    image: postgres:12
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=ai
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=020300
+
+volumes:
+  node_db_data: {}

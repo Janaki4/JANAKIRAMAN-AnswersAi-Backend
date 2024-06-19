@@ -1,0 +1,201 @@
+{
+	"info": {
+		"_postman_id": "1ce0f6b3-2525-432a-acc4-9467d5936e7e",
+		"name": "Ai",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18123970"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"phoneNumber\": \"8122477268\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4800/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4800",
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Feedback",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"feedback\": \"haghavghavaha\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4800/user/feedback",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4800",
+					"path": [
+						"user",
+						"feedback"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Increase credits",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"creds\" : 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4800/user/feedback",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4800",
+					"path": [
+						"user",
+						"feedback"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ask plain question",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4800/ask/plain/question",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4800",
+					"path": [
+						"ask",
+						"plain",
+						"question"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get history",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "get single history",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4800/ask/history/single",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4800",
+					"path": [
+						"ask",
+						"history",
+						"single"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ask answer from pdf",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InBob25lTnVtYmVyIjoiODEyMjQ3NzI2OCIsImNyZWRpdHMiOjV9LCJpYXQiOjE3MTg3ODQzMjIsImV4cCI6MjAxODc4NDMyMn0.KKqNTOp0iFM_J_pBP9n5XX7dQ5k9jBXmI8bD2I5NK3_jZR_4kkrVgtNRJgVYbpQ88EFECSyPITbDxVraaaq1kQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/Janakiraman/Desktop/Resumes/யானை_டாக்டர்_ஜெயமோகன்_@tamilbooksworld.pdf"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4800/ask/pdf/question/:question/history/:historyId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4800",
+					"path": [
+						"ask",
+						"pdf",
+						"question",
+						":question",
+						"history",
+						":historyId"
+					],
+					"variable": [
+						{
+							"key": "question",
+							"value": "what is the Synopsis "
+						},
+						{
+							"key": "historyId",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
